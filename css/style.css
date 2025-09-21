@@ -1,0 +1,500 @@
+/* Host Grotesk */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Host Grotesk', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            background-color: #000;
+            color: white;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .header.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .header-container {
+            padding: 25px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .header-title {
+            font-weight: 400;
+            font-size: 32px;
+            color: white;
+            max-width: 233px;
+            line-height: 0.9;
+        }
+
+        .header-logo {
+            font-weight: 800;
+            font-size: 28px;
+            color: white;
+            max-width: 42px;
+            text-transform: uppercase;
+            line-height: 0.8;
+        }
+
+        .header-contact {
+            font-weight: 400;
+            font-size: 32px;
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Main container for horizontal scrolling */
+        .horizontal-scroll-container {
+            display: flex;
+            flex-direction: row;
+            width: 100vw; /* 6 секций * 100vw */
+            height: 100vh;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .section {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            flex-grow: 0;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .scroll-hint span {
+            font-size: 14px;
+        }
+
+        .scroll-hint svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Intro */
+        .intro-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .intro-title {
+            position: absolute;
+            z-index: 1;
+            left: 25px;
+            bottom: 25px;
+            font-weight: 500;
+            font-size: 176px;
+            color: white;
+        }
+
+        .intro-stage {
+            position: absolute;
+            z-index: 1;
+            right: 25px;
+            bottom: 25px;
+            font-weight: 400;
+            font-size: 20px;
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Scroll elements */
+        .scroll-element {
+            width: 100vw; 
+            height: 100vh;
+            flex-shrink: 0;
+            flex-grow: 0;
+            position: relative;
+            background: black;
+        }
+
+        /* scroll-element first */
+        .scroll-element-first__vector {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .scroll-element-first__keycap {
+            position: absolute;
+            left: 40%;
+            top: 15%;
+            width: 21%;
+        }
+
+        .scroll-element-first__keycap1 {
+            position: absolute;
+            left: 60%;
+            top: 0;
+            width: 21%;
+        }
+
+        .scroll-element-first__keycap2 {
+            position: absolute;
+            left: 25%;
+            top: 55%;
+            width: 21%;
+        }
+
+        .scroll-element-first__keycap3 {
+            position: absolute;
+            left: 15%;
+            top: 25%;
+            width: 21%;
+        }
+
+        .scroll-element-first__title {
+            position: absolute;
+            left: 25px;
+            top: 50px;
+            z-index: 1;
+            width: 21%;
+        }
+
+        .scroll-element-first__text {
+            position: absolute;
+            bottom: 200px;
+            left: 25px;
+            max-width: 280px;
+            z-index: 1;
+        }
+
+        .scroll-element-first__text-title {
+            font-weight: 500;
+            font-size: 32px;
+            color: white;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .scroll-element-first__text-subtitle {
+            font-weight: 400;
+            font-size: 18px;
+            color: #AFAFAF;
+            line-height: 1.2;
+        }
+
+        .scroll-element-first__text-subtitle span {
+            color: white;
+        }
+
+        .scroll-element-first__vidgets {
+            position: absolute;
+            left: 25px;
+            bottom: 40%;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+        }
+
+        .scroll-element-first__vidgets-apps {
+            position: absolute;
+            left: 100px;
+            top: -40px;
+            z-index: 1;
+        }
+
+        /* scroll-element second */
+        .scroll-element-second__vector {
+            position: absolute;
+            bottom: 0;
+            left: 8%;
+            z-index: 1;
+        }
+
+        .scroll-element-second__keycap {
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            z-index: 1;
+            width: 21%;
+        }
+
+        .scroll-element-second__keycap-up {
+            position: absolute;
+            top: 34%;
+            left: 5%;
+            width: 21%;
+        }
+
+        .shift-right {
+            left: 45% !important; /* 5% + 20% = 25% */
+        }
+
+        .shift-right-sec {
+            left: 27% !important; /* 5% + 20% = 25% */
+        }
+
+        .shift-up {
+            top: 30% !important; /* 5% + 20% = 25% */
+        }
+
+        .shift-down {
+            top: 52% !important; /* 5% + 20% = 25% */
+        }
+
+        .scroll-element-second__keycap-up,
+        .scroll-element-second__keycap-down {
+            transition: left 0.5s ease;
+        }
+
+        .scroll-element-fifth__wow,
+        .scroll-element-fifth__cry {
+            transition: top 0.5s ease;
+        }
+
+        .scroll-element-second__keycap-down {
+            position: absolute;
+            top: 34%;
+            left: 5%;
+            width: 18%;
+        }
+
+        .scroll-element-second__title {
+            position: absolute;
+            right: 25px;
+            top: 15%;
+            width: 21%;
+        }
+
+        .scroll-element-second__text {
+            position: absolute;
+            right: 7%;
+            bottom: 20%;
+            color: white;
+        }
+
+        .scroll-element-second__text-title {
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .scroll-element-second__text-subtitle {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.2;
+            color: #AFAFAF;
+        }
+
+        .scroll-element-second__text-subtitle span {
+            color: #ffffff;
+        }
+
+        /* scroll-element third */
+        .scroll-element-third__block {
+            position: absolute;
+            right: 25px;
+        }
+
+        .scroll-element-third__vector {
+            position: absolute;
+            bottom: 0;
+            left: -20%;
+            z-index: 1;
+        }
+
+        .scroll-element-third__keycap-up {
+            position: absolute;
+            top: 37%;
+            left: -12%;
+            width: 21%;
+        }
+
+        .scroll-element-third__keycap-down {
+            position: absolute;
+            top: 37%;
+            left: 10%;
+            width: 21%;
+        }
+
+        .scroll-element-third__title {
+            position: absolute;
+            right: 45%;
+            top: 15%;
+            width: 21%;
+        }
+
+        .scroll-element-third__text {
+            position: absolute;
+            right: 45%;
+            bottom: 20%;
+            color: white;
+        }
+
+        .scroll-element-third__text-title {
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .scroll-element-third__text-subtitle {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.2;
+            color: #AFAFAF;
+        }
+
+        .scroll-element-third__text-subtitle span {
+            color: #ffffff;
+        }
+/*  */
+
+        .scroll-element-fourth__txt {
+            position: absolute;
+            right: 0;
+            top: 40%;
+            width: 85%;
+        }
+
+        .scroll-element-fourth__cry {
+            position: absolute;
+            left: 25%;
+            top: 25%;
+        }
+
+        .scroll-element-fourth__wow {
+            position: absolute;
+            right: 20%;
+            top: 60%;
+        }
+
+        /* scroll-element fifth */
+        .scroll-element-fifth__txt {
+            position: absolute;
+            left: 0;
+            top: 40%;
+            width: 85%;
+        }
+
+        .scroll-element-fifth__cry {
+            position: absolute;
+            left: 25%;
+            top: 25%;
+        }
+
+        .scroll-element-fifth__wow {
+            position: absolute;
+            right: 20%;
+            top: 60%;
+        }
+
+        .scroll-element-fifth__text {
+            position: absolute;
+            left: 42%;
+            top: 62%;
+            color: white;
+        }
+
+        .scroll-element-fifth__text-title {
+            font-weight: 500;
+            font-size: 32px;
+        }
+
+        /* scroll-element sixth */
+        .scroll-element-sixth__title {
+            position: absolute;
+            left: 25px;
+            top: 25px;
+        }
+
+        .scroll-element-sixth__text {
+            position: absolute;
+            left: 25px;
+            top: 20%;
+            color: white;
+            font-weight: 500;
+            font-size: 32px;
+        }
+
+        .scroll-element-sixth__buttons {
+            position: absolute;
+            left: 25px;
+            top: 35%;
+            display: flex;
+            flex-wrap: nowrap;
+            max-width: 499px;
+        }
+
+        .scroll-element-sixth__subtext {
+            color: white;
+            position: absolute;
+            left: 25px;
+            top: 45%;
+            font-weight: 400;
+            font-size: 18px;
+            max-width: 499px;
+        }
+
+        .scroll-element-sixth__image {
+            position: absolute;
+            right: 10%;
+            bottom: 0;
+            width: 42%;
+        }
