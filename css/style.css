@@ -63,12 +63,181 @@
         .horizontal-scroll-container {
             display: flex;
             flex-direction: row;
-            width: 100vw; /* 6 секций * 100vw */
+            width: 100vw; 
             height: 100vh;
             overflow-y: hidden;
             overflow-x: scroll;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+        }
+
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none; 
+        }
+
+        /* Кастомный скроллбар */
+        .custom-scrollbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: none;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* backdrop-filter: blur(5px); */
+        }
+
+        .custom-scrollbar {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .custom-scrollbar.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-track {
+            width: 100%;
+            height: 0px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .scroll-thumb {
+            position: absolute;
+            width: 90px;
+            height: 6px;
+            background: #FF6B00;
+            border-radius: 10%;
+            top: 50%;
+            left: 0%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            transition: transform 0.1s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .scroll-thumb:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .scroll-thumb:active {
+            cursor: grabbing;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .ruler-mark {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            height: 30px; /* Увеличиваем высоту для размещения текста */
+        }
+
+        .ruler-mark::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .ruler-mark.big::before {
+            height: 30px; 
+        }
+
+        /* Новые стили для текста под линиями */
+        .ruler-mark.big {
+            position: relative;
+        }
+
+        .ruler-text {
+            position: absolute;
+            top: 25px; /* Размещаем текст под линией */
+            left: 120%; /* Сдвигаем текст правее от центра */
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 11px;
+            color: white;
+            font-weight: 400;
+            font-family: 'Host Grotesk', sans-serif;
+        }
+
+        /* Альтернативный вариант с более точным позиционированием */
+        .ruler-mark.big::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 25px;
+            left: 60%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 11px;
+            color: white;
+            font-weight: 400;
+            font-family: 'Host Grotesk', sans-serif;
+        }
+
+        /* Остальной ваш CSS код остается без изменений */
+        .custom-scrollbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: none;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* backdrop-filter: blur(5px); */
+        }
+
+        .scroll-track {
+            width: 100%;
+            height: 0px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .scroll-thumb {
+            position: absolute;
+            width: 90px;
+            height: 6px;
+            background: #FF6B00;
+            border-radius: 10%;
+            top: 50%;
+            left: 0%;
+            transform: translate(-50%, -50%);
+            cursor: grab;
+            transition: transform 0.1s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .scroll-ruler {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin-top: 8px;
+            color: white;
+            font-size: 12px;
+            font-family: 'Host Grotesk', sans-serif;
         }
 
         .section {
@@ -282,23 +451,36 @@
         }
 
         .shift-right {
-            left: 45% !important; /* 5% + 20% = 25% */
+            left: 45% !important; 
         }
 
         .shift-right-sec {
-            left: 27% !important; /* 5% + 20% = 25% */
+            left: 27% !important; 
+        }
+
+        .shift-right__second {
+            left: -10% !important; 
+        }
+
+        .shift-right-sec__second {
+            left: 11% !important; 
         }
 
         .shift-up {
-            top: 30% !important; /* 5% + 20% = 25% */
+            top: 30% !important; 
         }
 
         .shift-down {
-            top: 52% !important; /* 5% + 20% = 25% */
+            top: 52% !important; 
         }
 
         .scroll-element-second__keycap-up,
         .scroll-element-second__keycap-down {
+            transition: left 0.5s ease;
+        }
+
+        .scroll-element-third__keycap-up,
+        .scroll-element-third__keycap-down {
             transition: left 0.5s ease;
         }
 
@@ -362,14 +544,14 @@
         .scroll-element-third__keycap-up {
             position: absolute;
             top: 37%;
-            left: -12%;
+            left: -22%;
             width: 21%;
         }
 
         .scroll-element-third__keycap-down {
             position: absolute;
             top: 37%;
-            left: 10%;
+            left: -22%;
             width: 21%;
         }
 
@@ -430,7 +612,7 @@
             position: absolute;
             left: 0;
             top: 40%;
-            width: 85%;
+            width: 92%;
         }
 
         .scroll-element-fifth__cry {
